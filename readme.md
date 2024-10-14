@@ -11,7 +11,6 @@ Este es un sencillo administrador de tareas en Python que te permite crear, ver,
 - Eliminar tareas por ID
 - Marcar tareas como completas 
 
-
 ## Requisitos
 
 - Python 3.x
