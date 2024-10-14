@@ -68,10 +68,43 @@ def complete_task(task_complete = str):
     except FileExistsError:
         print("Empty list: no tasks have been created!")
 
+def help(): 
+    print("""
+          comand    info
+        1. clear    **clean the console** 
+        2. view     **show the tasks**
+        3. delete   **delete a task receives the task id as argument**
+        4. complete **Marks a task as complete or finished, receiving as argument the task you already finished**
+        5. create   **creates a task, receiving as argument the new task you want to add**
+    """)
 
+while True:
 
-#task = input("> ")
-#create_task(task=task)
-#complete_task(task_complete=task)    
-#delete_task(id=task)
-view_task()
+    try: 
+        commant = input("> ")
+        commant.lower()
+        order_commant = commant.split()
+
+        if order_commant[0] == "view":
+            view_task()
+        elif order_commant[0] == "create":
+            create_task(order_commant[1])
+        elif order_commant[0] == "delete":
+            id = int(order_commant[1])
+            delete_task(id=id)
+        elif order_commant[0] == "complete":
+            complete_task(order_commant[1])
+        elif order_commant[0] =="clear":
+            os.system("clear")
+        elif order_commant[0] == "quit":
+            break
+        elif order_commant[0] == "--help":
+            help()
+        else:
+            print("command not found Error")
+    except IndexError:
+        print("Enter a command try --help to see available commands")
+        continue
+    except KeyboardInterrupt:
+        print(" Exit \n")
+        break
